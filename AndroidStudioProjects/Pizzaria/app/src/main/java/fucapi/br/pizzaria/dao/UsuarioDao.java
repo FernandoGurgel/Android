@@ -16,10 +16,12 @@ import fucapi.br.pizzaria.conexao.Conexao;
 public class UsuarioDao {
 
     private Conexao conexao;
+    private String msg;
 
     public UsuarioDao(Context context){
         conexao = new Conexao(context);
     }
+
 
     public String inserir(UsuarioBean ob){
         String msg = null;
@@ -38,22 +40,38 @@ public class UsuarioDao {
         return msg;
     }//inserir
     
-    public void editar(UsuarioBean ob){
+    public String editar(UsuarioBean ob){
         ContentValues v=new ContentValues();
         //resgatando valores informados
-        v.put("usunome",ob.getUsunome());
-        v.put("ususenha",ob.getUsusenha());
-        v.put("usuemail",ob.getUsuemail());
-        v.put("usutipo",ob.getUsutipo());
-        //editando
-        conexao.getWritableDatabase().update("usuario", v, "_usuid=?", new String[]{"" + ob.getUsuid()});
+        try{
+            v.put("usunome",ob.getUsunome());
+            v.put("ususenha",ob.getUsusenha());
+            v.put("usuemail",ob.getUsuemail());
+            v.put("usutipo", ob.getUsutipo());
+            String[] args = {(ob.getUsuid().toString())};
+            conexao.getWritableDatabase().update("usuario", v, "_usuid=?", args);
+            msg = "Alterado com sucesso!";
+        }catch (Exception e){
+            msg=e.getMessage();
+        }
+        return msg;
+
     }//editar
 
-    public void deletar(UsuarioBean ob){
-        conexao.getWritableDatabase().delete("usuario", "_usuid=" + ob.getUsuid(), null);
+    public String deletar(UsuarioBean ob){
+
+        try{
+            String[] args = {(ob.getUsuid().toString())};
+            conexao.getWritableDatabase().delete("usuario", "_usuid=?",args);
+            msg = "Deletado com sucesso!";
+        }catch (Exception e){
+            msg = e.getMessage();
+        }
+        return msg;
     }//excluir
 
     public List<UsuarioBean> listarUsuario(){
+
         List<UsuarioBean> lista = new ArrayList<>();
         String query = "select * from usuario";
         Cursor cursor = conexao.getWritableDatabase().rawQuery(query,null);

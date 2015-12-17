@@ -1,15 +1,17 @@
 package fucapi.br.pizzaria.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by fernando on 12/12/15.
  */
-public class UsuarioBean {
+public class UsuarioBean implements Serializable{
 
     private  String usunome;
     private  String ususenha;
     private  String usuemail;
     private  String usutipo;
-    private  long usuid;
+    private  Long usuid;
 
     @Override
     public String toString() {
@@ -48,11 +50,11 @@ public class UsuarioBean {
         this.usutipo = usutipo;
     }
 
-    public long getUsuid() {
+    public Long getUsuid() {
         return usuid;
     }
 
-    public void setUsuid(long usuid) {
+    public void setUsuid(Long usuid) {
         this.usuid = usuid;
     }
 }

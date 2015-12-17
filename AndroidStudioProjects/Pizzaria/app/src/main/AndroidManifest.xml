@@ -23,9 +23,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controlado.Cadastro_usuario"
-            android:label="Novo usuario"
-            ></activity>
+        <activity
+            android:name=".controlado.Cadastro_usuario"
+            android:label="Novo usuario" />
+        <activity
+            android:name=".controlado.Principal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controlado.Lista_Usuario"
+            android:label="@string/title_activity_lista__usuario"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controlado.Lista_Cliente"
+            android:label="@string/title_activity_lista__cliente"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controlado.Cadastro_cliente" />
+        <activity
+            android:name=".controlado.Lista_Produto"
+            android:label="@string/title_activity_lista__produto"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".controlado.Cadastro_produto" />
+        <activity
+            android:name=".controlado.Lista_Pedido"
+            android:label="@string/title_activity_lista__pedido"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controlado.Lista_Entregador"
+            android:label="@string/title_activity_lista__entregador"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controlado.Cadastro_entregador"
+            android:label="@string/title_activity_cadastro_entregador"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".controlado.Cadastro_pedido"
+            android:label="@string/title_activity_cadastro_pedido"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

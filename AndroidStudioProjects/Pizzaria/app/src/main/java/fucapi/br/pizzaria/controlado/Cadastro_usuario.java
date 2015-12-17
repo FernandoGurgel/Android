@@ -38,6 +38,13 @@ public class Cadastro_usuario extends AppCompatActivity {
         senha = (EditText) findViewById(R.id.senhaUsuario);
         radioGroup = (RadioGroup) findViewById(R.id.rdgrup);
 
+        final UsuarioBean alterar = (UsuarioBean) getIntent().getSerializableExtra("p_alterar");
+
+        if (alterar != null) {
+            setBean(alterar);
+            Toast.makeText(Cadastro_usuario.this, alterar.getUsunome(), Toast.LENGTH_SHORT).show();
+        }
+
         btnsalvar = (Button) findViewById(R.id.btnsalva);
         btnsalvar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,18 +52,36 @@ public class Cadastro_usuario extends AppCompatActivity {
 
                 int selectRadio = radioGroup.getCheckedRadioButtonId();
                 radioButton = (RadioButton) findViewById(selectRadio);
+                if(alterar == null){
+                    UsuarioBean bean = new UsuarioBean();
+                    bean.setUsusenha(senha.getText().toString());
+                    bean.setUsutipo(String.valueOf(radioButton.getText()));
+                    bean.setUsunome(nome.getText().toString());
+                    bean.setUsuemail(email.getText().toString());
+                    String msg = dao.inserir(bean);
+                    Toast.makeText(Cadastro_usuario.this,msg,Toast.LENGTH_SHORT).show();
+                    finish();
+                }else {
+                    UsuarioBean bean = new UsuarioBean();
+                    bean.setUsusenha(senha.getText().toString());
+                    bean.setUsutipo(String.valueOf(radioButton.getText()));
+                    bean.setUsunome(nome.getText().toString());
+                    bean.setUsuemail(email.getText().toString());
+                    bean.setUsuid(alterar.getUsuid());
+                    String msg = dao.editar(bean);
+                    Toast.makeText(Cadastro_usuario.this,msg,Toast.LENGTH_SHORT).show();
+                    finish();
+                }
 
-                UsuarioBean bean = new UsuarioBean();
-                bean.setUsusenha(senha.getText().toString());
-                bean.setUsutipo(String.valueOf(radioButton.getText()));
-                bean.setUsunome(nome.getText().toString());
-                bean.setUsuemail(email.getText().toString());
-                String msg = dao.inserir(bean);
-                Toast.makeText(Cadastro_usuario.this,msg,Toast.LENGTH_SHORT).show();
-                finish();
 
             }
 
         });
+    }
+
+    private void setBean(UsuarioBean alterar) {
+        nome.setText(alterar.getUsunome());
+        email.setText(alterar.getUsuemail());
+        senha.setText(alterar.getUsusenha());
     }
 }

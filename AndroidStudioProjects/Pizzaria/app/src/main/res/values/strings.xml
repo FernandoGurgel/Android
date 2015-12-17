@@ -16,4 +16,31 @@
         completions."
     </string>
     <string name="nome">Nome</string>
+    <string name="title_activity_pedido__lista">Pedido_Lista</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_pedido">Pedido</string>
+    <string name="nomeUser">nome</string>
+    <string name="ftd">Porra nao muda</string>
+    <string name="fdp1">Aqui e pior ainda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_lista__usuario">Usuario</string>
+    <string name="menu_excluir">Excluir</string>
+    <string name="menu_sair">Sair</string>
+    <string name="title_activity_lista__cliente">Cliente</string>
+    <string name="endereco">Endereco</string>
+    <string name="fone">Fone</string>
+    <string name="title_activity_lista__produto">Produto</string>
+    <string name="desc">Descricao</string>
+    <string name="qtd">Quantidade</string>
+    <string name="vl">Valor</string>
+    <string name="title_activity_lista__fornecedor">Fornecedor</string>
+    <string name="title_activity_lista__pedido">Pedido</string>
+    <string name="title_activity_lista__entregador">Entregador</string>
+    <string name="title_activity_cadastro_entregador">Cadastro entregador</string>
+    <string name="title_activity_cadastro_fornecedor">Cadastro fornecedor</string>
+    <string name="title_activity_cadastro_pedido">Cadastro pedido</string>
 </resources>

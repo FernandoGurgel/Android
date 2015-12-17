@@ -29,7 +29,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -215,13 +214,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
-        } /*else {
+        }else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
-        }*/
+        }
     }
 
     private boolean isEmailValid(String email) {
@@ -368,10 +367,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             // falta aponta para tela principal
             if (success) {
-                Intent intent = new Intent(LoginActivity.this, Cadastro_usuario.class);
+                Intent intent = new Intent(LoginActivity.this,Principal.class);
+                intent.putExtra("nome", "Usuario "+bean.getUsunome());
+                intent.putExtra("email", "Email "+bean.getUsuemail());
                 startActivity(intent);
-                Toast.makeText(LoginActivity.this,"Olá "+bean.getUsunome()+", "+bean.getUsutipo(),Toast.LENGTH_SHORT).show();
-                //finish();
+                //Toast.makeText(LoginActivity.this,"Olá "+bean.getUsunome()+", "+bean.getUsutipo(),Toast.LENGTH_SHORT).show();
+                finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
                 mPasswordView.requestFocus();
